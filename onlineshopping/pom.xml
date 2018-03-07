@@ -13,6 +13,14 @@
 	</properties>
 	<dependencies>
 
+		<!-- Dependency for Backend Project -->
+
+		<dependency>
+			<groupId>com.shj</groupId>
+			<artifactId>shoppingbackend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<!-- Java EE Api -->
 
 		<dependency>
@@ -46,7 +54,7 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 	</dependencies>
 	<build>
 		<plugins>
