@@ -25,6 +25,8 @@
 
 <script type="text/javascript">
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
+	window.imagesPath = '${images}';
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -35,6 +37,9 @@
 
 <!-- Bootstrap Lux Theme CSS -->
 <link href="${css}/bootstrap-lux-theme.css" rel="stylesheet">
+
+<!-- DataTable Bootstrap CSS -->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -67,24 +72,35 @@
 			<c:if test="${userClickContact == true }">
 				<%@include file="contact.jsp"%>
 			</c:if>
-			
+
 			<!-- Load only when user clicks All Products -->
 
-			<c:if test="${userClickAllProducts == true || userClickCategoryProducts == true}">
+			<c:if
+				test="${userClickAllProducts == true || userClickCategoryProducts == true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
-			
+
 		</div>
 		<!-- Footer -->
 
 		<%@include file="./shared/footer.jsp"%>
 
-		<!-- Bootstrap core JavaScript -->
+		<!-- jQuery -->
 		<script src="${js}/jquery.js"></script>
+
+		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.bundle.min.js"></script>
+		
+		<!-- FontAwesome linking -->
+		<script defer src="${js}/fontawesome-all.js"></script>
+
+		<!-- DataTable plug-in -->
+		<script src="${js}/jquery.dataTables.js"></script>
+
+		<!-- DataTable Bootstrap Javascript-->
+		<script src="${js}/dataTables.bootstrap4.js"></script> 
 
 		<!-- Coded JavaScritpt -->
-
 		<script src="${js}/myapp.js"></script>
 
 	</div>

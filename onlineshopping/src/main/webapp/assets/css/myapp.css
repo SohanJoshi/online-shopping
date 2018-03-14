@@ -43,3 +43,11 @@ footer {
 	height: 60px;
 	max-width: 100%;
 }
+.col-xs-12 {
+	width: 100%;
+	max-width: 100%;
+}
+.dataTableImage{
+	height:100px;
+	width:100px;
+}
