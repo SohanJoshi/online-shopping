@@ -32,9 +32,6 @@
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
-<!-- Bootstrap Sketchy Theme CSS -->
-<%-- <link href="${css}/bootstrap-sketchy-theme.css" rel="stylesheet"> --%>
-
 <!-- Bootstrap Lux Theme CSS -->
 <link href="${css}/bootstrap-lux-theme.css" rel="stylesheet">
 
@@ -80,6 +77,13 @@
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 
+			<!-- Load when user clicks on a single product -->
+
+			<c:if
+				test="${userClickShowProduct == true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+
 		</div>
 		<!-- Footer -->
 
@@ -90,7 +94,7 @@
 
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.bundle.min.js"></script>
-		
+
 		<!-- FontAwesome linking -->
 		<script defer src="${js}/fontawesome-all.js"></script>
 
@@ -98,7 +102,7 @@
 		<script src="${js}/jquery.dataTables.js"></script>
 
 		<!-- DataTable Bootstrap Javascript-->
-		<script src="${js}/dataTables.bootstrap4.js"></script> 
+		<script src="${js}/dataTables.bootstrap4.js"></script>
 
 		<!-- Coded JavaScritpt -->
 		<script src="${js}/myapp.js"></script>

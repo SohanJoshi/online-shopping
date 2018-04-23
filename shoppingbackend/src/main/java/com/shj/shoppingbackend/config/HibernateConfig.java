@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class HibernateConfig {
 
-	private static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;database=MyOnlineShopping";
-	private static final String DATBASE_DRIVER_NAME = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	private static final String DATABSE_DIALECT = "org.hibernate.dialect.SQLServerDialect";
-	private static final String DATBASE_USER_NAME = "MyOnlineShoppingUser";
+	private static final String DATABASE_URL = "jdbc:mysql://localhost/myonlineshopping";
+	private static final String DATABASE_DRIVER_NAME = "com.mysql.jdbc.Driver";
+	private static final String DATABSE_DIALECT = "org.hibernate.dialect.MySQLDialect";
+	private static final String DATBASE_USER_NAME = "root";
 	private static final String DATBASE_PASSWORD = "root";
 	
 	/**
@@ -36,7 +36,7 @@ public class HibernateConfig {
 		
 		// Setting connection details
 		
-		dataSource.setDriverClassName(DATBASE_DRIVER_NAME);
+		dataSource.setDriverClassName(DATABASE_DRIVER_NAME);
 		dataSource.setUrl(DATABASE_URL);
 		dataSource.setUsername(DATBASE_USER_NAME);
 		dataSource.setPassword(DATBASE_PASSWORD);
