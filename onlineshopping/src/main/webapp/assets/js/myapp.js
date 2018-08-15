@@ -1,7 +1,9 @@
 $(function(){
 	//solving the active menu problem
 	switch(menu){
-	
+	case 'Home' :
+		$('#home').addClass('active');
+		break;
 	case 'About Us' :
 		$('#about').addClass('active');
 		break;
@@ -11,8 +13,8 @@ $(function(){
 	case 'All Products':
 		$('#listProducts').addClass('active');
 		break;
-	case 'Home' :
-		$('#home').addClass('active');
+	case 'Manage Products' :
+		$('#manageProducts').addClass('active');
 		break;
 	default : 
 		$('#listProducts').addClass('active');
@@ -21,6 +23,7 @@ $(function(){
 	}
 	
 	// code for jQuery dataTable
+
 	// create a dataset
 	
 	var $table = $('#productListTable');
@@ -91,4 +94,211 @@ $(function(){
 		});
 	}
 	
+	// Dismissing alert after 3 secs 
+	var $alert = $('.alert');
+	
+	if($alert.length){
+		setTimeout(function(){
+			$alert.fadeOut('slow');
+		},3000);
+	}
+	
+
+	// ----------------------- Toggle Switch handler
+	
+	$('.switch input[type="checkbox"').on('change',function() {
+		
+		var checkbox = $(this);
+		var checked = checkbox.prop('checked');
+		var dMsg = (checked) ? "Do you want to activate the product ?":
+			"Do you want to deactivate the product ?";
+		var value = checkbox.prop('value');
+		bootbox.confirm({
+			size: 'medium',
+			title: 'Product activation and deactivation',
+			message: dMsg,
+			callback: function(confirmed) {
+				if(confirmed){
+					console.log(value);
+					bootbox.alert({
+						size: 'medium',
+						title: 'Information',
+						message: 'You are going to perform action of product ' + value
+					});
+				}else {
+					checkbox.prop('checked',!checked );
+				}
+			}
+		})
+		
+	});
+
+	
+	// ----------- Data Table for Admin ---------
+
+	// create a dataset
+	
+	var $adminProductsTable = $('#adminProductsTable');
+	
+	// execute the code below where we have the table 
+	
+	if($adminProductsTable.length){
+		// console.log("Inside the table");
+		
+		var jsonUrl = window.contextRoot + '/json/data' +  '/admin/all/products';
+		
+		$adminProductsTable.DataTable({
+			lengthMenu: [[10, 30, 50, -1], ['10 records','30 records','50 records', 'All']],
+			pageLength: 5,
+			ajax: {
+				url: jsonUrl,
+				dataSrc: ''
+			},
+			columns: [
+				
+						{
+							data: 'id'
+						},
+						{
+							data: 'code',
+							mRender: function(data, type, row) {
+								return '<img src="'+window.imagesPath+'/' + data + '.jpg" class="adminDataTableImg"/>';
+							}
+						},
+						{
+							data: 'name'
+						},
+						{
+							data: 'brand'
+						},
+						{
+							data: 'quantity',
+							mRender: function (data, type, row) {
+								if(data < 1)
+									return "<span style='color:red'>Out of Stock</span>";
+								else
+									return data;
+							}
+						},
+						{
+							data: 'unitPrice',
+							mRender: function(data, type, row) {
+								return '&#8377; ' + data;
+							}
+							
+						},
+						{
+							data: 'active',
+							bSortable: false,
+							mRender: function(data, type, row) {
+								var str = '';
+								
+								str += '<label class="switch">';
+								if(data){
+									str += '<input type="checkbox" checked="checked" value="' + row.id +'"/>';
+								} else {
+									str += '<input type="checkbox" value="' + row.id +'"/>';
+								}
+								str += '<div class="slider"></div>';
+								str += '</label>';
+								
+								return str;
+							}
+						},
+						{
+							data: 'id',
+							bSortable: false,
+							mRender: function (data, type, row) {
+							
+								var str = '';
+								
+								str += '<a href="'+window.contextRoot+'/manage/'+row.id+'/product" class="btn btn-warning">';
+								str += '<span class="fas fa-pencil-alt"></span>';
+								str += '</a>';
+								
+								return str;
+							}
+						}
+					],
+			initComplete: function() {
+						var api = this.api();
+						api.$('.switch input[type="checkbox"]').on('change',function() {
+							var checkbox = $(this);
+							var checked = checkbox.prop('checked');
+							var dMsg = (checked) ? "Do you want to activate the product ?":
+								"Do you want to deactivate the product ?";
+							var value = checkbox.prop('value');
+							bootbox.confirm({
+								size: 'medium',
+								title: 'Product activation and deactivation',
+								message: dMsg,
+								callback: function(confirmed) {
+									if(confirmed){
+										console.log(value);
+										
+										var activationUrl = window.contextRoot + '/manage/product/' + value + "/activation";
+										
+										$.post(activationUrl, function(data) {
+											bootbox.alert({
+												size: 'medium',
+												title: 'Information',
+												message: data
+											});
+										});
+									}else {
+										checkbox.prop('checked',!checked );
+									}
+								}
+							})
+							
+					});
+				}
+		});
+	}
+	
+	// ----------------------------
+	// Validation code for Category
+	
+	var $categoryForm = $('#categoryForm');
+	
+	if($categoryForm.length) {
+		
+		$categoryForm.validate({
+			
+			rules : {
+				
+				name : {
+					
+					required : true,
+					minlength : 2
+				},
+				
+				description : {
+					required : true
+				}
+			},
+			
+			messages : {
+				
+				name : {
+					
+					required : "Please add the category name!",
+					minlength : "The minimum length of the name should be 2."
+				},
+				
+				description : {
+					required : "Please add a description for the category!"
+				}
+			},
+			errorElement : 'em',
+			errorPlacement : function (error, element) {
+				// add the class of help-block
+				error.addClass('help-block');
+				// add the error element
+				error.insertAfter(element);
+			}
+		})
+	}
+
 });
+

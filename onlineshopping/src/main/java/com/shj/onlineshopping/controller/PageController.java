@@ -15,6 +15,7 @@ import com.shj.shoppingbackend.dto.Category;
 import com.shj.shoppingbackend.dto.Product;
 
 @Controller
+//@RequestMapping("/")
 public class PageController {
 
 	private static final Logger logger = LoggerFactory.getLogger(PageController.class);

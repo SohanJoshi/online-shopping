@@ -1,0 +1,45 @@
+	--Spring
+@Configuration
+@ComponentScan(basePackage)
+@EnableTranscationManagement
+@Component
+@Bean
+@Repository
+@Transactional
+@Autowired
+
+	--Spring MVC
+@Controller
+@RequestMapping
+@ResponseBody
+@RequestParam
+@ModelAttribute
+
+	--Spring Exception
+@Controller Advice
+@ExceptionHandler
+
+	--Javax (Hibernate)
+@Entity
+@Id
+@GeneratedValue(strategy)
+@Column(name)
+
+	--Json (Jackson package)
+@JsonIgnore
+
+	--Junit
+@BeforeClass
+@Test
+
+	--Hibernate Validator
+@NotNull - checks that the annotated value is not null
+@NotEmpty - checks that the annotated value in not null nor empty
+@NotBlank - checks that the annotated value is not empty and the length of trimmed value is not 0. 
+		Difference is that this annotation is only applied for Strings.
+@Size(min=, max= )
+@Max(value)
+@Min(value)
+@Email
+@Range(min,max) - works for number and string
+@Length(min, max) - works for strings only

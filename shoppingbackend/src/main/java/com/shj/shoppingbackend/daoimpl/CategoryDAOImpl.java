@@ -1,6 +1,5 @@
 package com.shj.shoppingbackend.daoimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -19,49 +18,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	private static List<Category> categories = new ArrayList<>();
-
-	static {
-		Category category = new Category();
-
-		// first category
-		category.setId(1);
-		category.setName("Television");
-		category.setDescription("This is some description for television");
-		category.setImageURL("CAT_1.img");
-		category.setActive(true);
-
-		categories.add(category);
-
-		// second category
-		category = new Category();
-
-		category.setId(2);
-		category.setName("Mobile");
-		category.setDescription("This is some description for mobile");
-		category.setImageURL("CAT_2.img");
-		category.setActive(true);
-
-		categories.add(category);
-
-		// third category
-		category = new Category();
-
-		category.setId(3);
-		category.setName("Laptops");
-		category.setDescription("This is some description for laptops");
-		category.setImageURL("CAT_3.img");
-		category.setActive(true);
-
-		categories.add(category);
-	}
 
 	@Override
 	public List<Category> list() {
 		
 		String selectActiveCategory = "from Category where active = :active";
 		
-		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory, Category.class);
 
 		query.setParameter("active", true);
 		
@@ -112,6 +75,4 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 	}
 	
-	
-
 }

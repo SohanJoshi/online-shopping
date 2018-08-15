@@ -14,8 +14,7 @@ public class CategoryTestCase {
 
 	private static AnnotationConfigApplicationContext context;
 	private static CategoryDAO categoryDAO;
-	private static Category category;
-
+	
 	@BeforeClass
 	public static void init() {
 
