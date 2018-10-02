@@ -101,3 +101,6 @@ input:checked +.slider:before {
 	transform: translateX(20px);
 }
 
+.nav-item {
+	margin-right: 0;
+}

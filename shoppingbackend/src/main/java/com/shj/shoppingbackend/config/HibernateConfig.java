@@ -18,11 +18,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class HibernateConfig {
 
-	private static final String DATABASE_URL = "jdbc:mysql://localhost/myonlineshopping";
-	private static final String DATABASE_DRIVER_NAME = "com.mysql.jdbc.Driver";
-	private static final String DATABSE_DIALECT = "org.hibernate.dialect.MySQLDialect";
-	private static final String DATBASE_USER_NAME = "root";
-	private static final String DATBASE_PASSWORD = "root";
+	private static final String DATABASE_URL = "jdbc:h2:tcp://localhost/~/My_Online_Shopping";
+	private static final String DATABASE_DRIVER_NAME = "org.h2.Driver";
+	private static final String DATABSE_DIALECT = "org.hibernate.dialect.H2Dialect";
+	private static final String DATBASE_USER_NAME = "sa";
+	private static final String DATBASE_PASSWORD = "";
 	
 	/**
 	 * Generates the data source bean with the mentioned properties
@@ -73,6 +73,8 @@ public class HibernateConfig {
 		properties.put("hibernate.dialect", DATABSE_DIALECT);
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
+		
+		properties.put("hibernate.hbm2ddl.auto", "update");
 		
 		return properties ;
 	}

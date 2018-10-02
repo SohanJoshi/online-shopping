@@ -43,3 +43,12 @@
 @Email
 @Range(min,max) - works for number and string
 @Length(min, max) - works for strings only
+
+	-- Hibernate ORM
+@Entity
+@Table
+@Column
+@OneToOne
+@JoinColumn
+@Id
+@GeneratedValue

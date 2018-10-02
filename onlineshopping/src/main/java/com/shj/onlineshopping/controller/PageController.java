@@ -15,10 +15,10 @@ import com.shj.shoppingbackend.dto.Category;
 import com.shj.shoppingbackend.dto.Product;
 
 @Controller
-//@RequestMapping("/")
+@RequestMapping("/")
 public class PageController {
 
-	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PageController.class);
 	
 	@Autowired
 	private CategoryDAO categoryDAO;
@@ -31,8 +31,8 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Home");
 		
-		logger.info("Inside Page Controller Logger - INFO");
-		logger.debug("Inside Page Controller Logger - DEBUG");
+		LOGGER.info("Inside Page Controller Logger - INFO");
+		LOGGER.debug("Inside Page Controller Logger - DEBUG");
 		
 		// passing the list of categories 
 		mv.addObject("categories", categoryDAO.list());
