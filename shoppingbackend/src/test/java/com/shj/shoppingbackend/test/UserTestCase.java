@@ -9,7 +9,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.shj.shoppingbackend.dao.UserDAO;
 import com.shj.shoppingbackend.dto.Address;
-import com.shj.shoppingbackend.dto.Cart;
 import com.shj.shoppingbackend.dto.User;
 
 public class UserTestCase {
@@ -17,7 +16,7 @@ public class UserTestCase {
 	private AnnotationConfigApplicationContext context;
 	private static UserDAO userDAO;
 	private User user = null;
-	private Cart cart = null;
+//	private Cart cart = null;
 	private Address address = null;
 	
 	@Before

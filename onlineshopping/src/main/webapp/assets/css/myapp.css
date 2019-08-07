@@ -104,3 +104,7 @@ input:checked +.slider:before {
 .nav-item {
 	margin-right: 0;
 }
+
+.table-responsive {
+	overflow-x: inherit;
+}

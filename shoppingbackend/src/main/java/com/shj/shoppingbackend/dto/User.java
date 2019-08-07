@@ -13,11 +13,10 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name="user_detail")
+@Table(name="user_details")
 public class User implements Serializable{
 
 	/**
@@ -47,7 +46,7 @@ public class User implements Serializable{
 	
 	private String role;
 	
-	@Length(min=8, max=16, message="Password size is out of range (Please try password with [8-16] characters)")
+	//@Length(min=8, max=16, message="Password size is out of range (Please try password with [8-16] characters)")
 	private String password;
 	
 	@NotBlank(message="Please re-enter Password")

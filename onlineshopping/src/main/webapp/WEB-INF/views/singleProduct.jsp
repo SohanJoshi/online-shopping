@@ -66,13 +66,15 @@
 
 			<hr />
 
+			<security:authorize access="hasAuthority('USER')">
+
 			<c:choose>
 				<c:when test="${product.quantity < 1}">
 
-			<a href="javascript:void(0)"
-				class="btn bts-disabled"> <i class="fas fa-shopping-cart"></i>
-				<strike>Add to cart</strike>
-			</a> 
+					<a href="javascript:void(0)"
+						class="btn bts-disabled"> <i class="fas fa-shopping-cart"></i>
+						<strike>Add to cart</strike>
+					</a> 
 				</c:when>
 				<c:otherwise>
 
@@ -82,7 +84,18 @@
 					</a> 
 				</c:otherwise>
 			</c:choose>
+			
+			</security:authorize>
+			
+			<security:authorize access="hasAuthority('ADMIN')">
 
+				<a href="${contextRoot}/manage/${product.id }/product"
+					class="btn bts-warning"> <i class="fas fa-pencil-alt"></i>
+						Edit
+				</a> 
+			
+			</security:authorize>
+			
 			<a href="${contextRoot}/show/all/products" class="btn bts-warning">
 				<i class="fas fa-arrow-left"></i> Back
 			</a>

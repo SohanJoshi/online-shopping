@@ -22,6 +22,17 @@ $(function(){
 		break;
 	}
 	
+	// to tackle the csrf token
+	
+	var token = $('meta[name="_csrf"]').attr('content');
+	var header = $('meta[name="_csrf_header"]').attr('content');
+	
+	if(token.length > 0 && header.length > 0) {
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
+	}
+	
 	// code for jQuery dataTable
 
 	// create a dataset
@@ -82,10 +93,15 @@ $(function(){
 								
 								var str = '';
 								str += '<a href="' + window.contextRoot + '/show/'+ data +'/product" class="btn btn-primary"><i class="fas fa-eye"></i></a>';
-								if(row.quantity < 1)
-									str += '<a href="javascript:void(0)" class="btn btn-warning disabled"><i class="fas fa-shopping-cart"></i></a>';
-								else
-									str += '<a href="' + window.contextRoot + '/cart/add/'+ data +'/product" class="btn btn-warning"><i class="fas fa-shopping-cart"></i></span></a>';
+								if(userRole == 'USER'){
+									if(row.quantity < 1)
+										str += '<a href="javascript:void(0)" class="btn btn-warning disabled"><i class="fas fa-shopping-cart"></i></a>';
+									else
+										str += '<a href="' + window.contextRoot + '/cart/add/'+ data +'/product" class="btn btn-success"><i class="fas fa-shopping-cart"></i></span></a>';
+									
+								} 
+								else 
+									str += '<a href="' + window.contextRoot + '/manage/'+ data +'/product" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></span></a>';
 								
 								return str;
 							}
@@ -234,11 +250,11 @@ $(function(){
 								message: dMsg,
 								callback: function(confirmed) {
 									if(confirmed){
-										console.log(value);
+										// console.log(value);
 										
-										var activationUrl = window.contextRoot + '/manage/product/' + value + "/activation";
+										var activationUrl = window.contextRoot + '/manage/products/' + value + '/activation';
 										
-										$.post(activationUrl, function(data) {
+										$.get(activationUrl, function(data) {
 											bootbox.alert({
 												size: 'medium',
 												title: 'Information',
@@ -300,5 +316,50 @@ $(function(){
 		})
 	}
 
+	// ----------------------------
+	// Validation code for Login Page
+	
+	var loginForm = $('#loginForm');
+	
+	if($loginForm.length) {
+		
+		$loginForm.validate({
+			
+			rules : {
+				
+				username : {
+					
+					required : true,
+					email : true
+				},
+				
+				passowrd : {
+					required : true
+				}
+			},
+			
+			messages : {
+				
+				username : {
+					
+					required : "Please provide username !",
+					email : "Please enter valid email address!"
+				},
+				
+				passoword : {
+					required : "Please enter the password !"
+				}
+			},
+			errorElement : 'em',
+			errorPlacement : function (error, element) {
+				// add the class of help-block
+				error.addClass('help-block');
+				// add the error element
+				error.insertAfter(element);
+			}
+		})
+	}
+
+	
 });
 

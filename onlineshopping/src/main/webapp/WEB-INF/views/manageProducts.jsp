@@ -175,38 +175,40 @@
 		</div>
 		
 		<div class="col-xs-12">
-			<div style="overflow:auto">
+			<div class="container-fluid">
 			
-				<!-- Product Table for Admin -->
-				<table id="adminProductsTable" class="table table-striped table-bordered">
-				
-					<thead>
-						<tr>
-							<td>Id</td>
-							<td>&#160;</td>
-							<td>Brand</td>
-							<td>Name</td>
-							<td>Quantity</td>
-							<td>Unit Price</td>
-							<td>Active</td>
-							<td>Edit</td>
-						</tr>
-					</thead>
-
-					<tfoot>
-						<tr>
-							<td>Id</td>
-							<td>&#160;</td>
-							<td>Name</td>
-							<td>Brand</td>
-							<td>Quantity</td>
-							<td>Unit Price</td>
-							<td>Active</td>
-							<td>Edit</td>
-						</tr>
-					</tfoot>
-				</table>
+				<div class="table-responsive">
 			
+					<!-- Product Table for Admin -->
+					<table id="adminProductsTable" class="table table-striped table-bordered">
+					
+						<thead>
+							<tr>
+								<td>Id</td>
+								<td>&#160;</td>
+								<td>Brand</td>
+								<td>Name</td>
+								<td>Quantity</td>
+								<td>Unit Price</td>
+								<td>Active</td>
+								<td>Edit</td>
+							</tr>
+						</thead>
+	
+						<tfoot>
+							<tr>
+								<td>Id</td>
+								<td>&#160;</td>
+								<td>Name</td>
+								<td>Brand</td>
+								<td>Quantity</td>
+								<td>Unit Price</td>
+								<td>Active</td>
+								<td>Edit</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
 			</div>
 		</div>
 	

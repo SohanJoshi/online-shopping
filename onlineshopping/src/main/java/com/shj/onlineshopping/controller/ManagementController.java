@@ -104,7 +104,7 @@ public class ManagementController {
 		return "redirect:/manage/products?operation=product";
 	}
 
-	@RequestMapping(value={"/product/{id}/activation"})
+	@RequestMapping(value={"/products/{id}/activation"})
 	@ResponseBody
 	public String handleProductActivation(@PathVariable("id") int id) {
 		Product product = productDAO.get(id);
