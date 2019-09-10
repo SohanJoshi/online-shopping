@@ -25,7 +25,7 @@ public class ProductTestCase {
 		productDAO = context.getBean(ProductDAO.class);
 	}
 
-	@Test
+	//@Test
 	public void testCRUDProduct() {
 
 		// create operation
@@ -59,20 +59,20 @@ public class ProductTestCase {
 
 	}
 
-	@Test
+	// @Test
 	public void testList() {
 		// list
 		assertEquals("Somthing went wrong while fetching the list active of products", 6, productDAO.list().size());
 	}
 
-	@Test
+	// @Test
 	public void testActiveList() {
 		// list of active products
 		assertEquals("Somthing went wrong while fetching the list active of products", 5,
 				productDAO.listActiveProduct().size());
 	}
 
-	@Test
+	// @Test
 	public void testActiceListByCategory() {
 		// list of active products by category
 
@@ -80,7 +80,7 @@ public class ProductTestCase {
 				productDAO.listActiveProductByCategory(2).size());
 	}
 
-	@Test
+	// @Test
 	public void testActiveByCategoryToLimit() {
 		// list of active products to limit
 

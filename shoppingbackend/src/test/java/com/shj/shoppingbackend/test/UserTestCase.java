@@ -135,7 +135,7 @@ public class UserTestCase {
 		assertTrue("Failed to update cart", userDAO.updateCart(cart));
 	}*/
 	
-	@Test
+	// @Test
 	public void testAddAddress() {
 		
 		// Add a user
@@ -215,7 +215,7 @@ public class UserTestCase {
 		
 	}*/
 	
-	@Test
+	// @Test
 	public void testGetAddresses() {
 		user = userDAO.getUserByEmail("hr@gmail.com");
 		

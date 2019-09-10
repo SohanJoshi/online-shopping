@@ -15,7 +15,7 @@
 	</properties>
 	<dependencies>
 
-		<!-- Dependency for Backend Project -->
+		<!-- Dependency for Back-end Project -->
 
 		<dependency>
 			<groupId>com.shj</groupId>
@@ -91,6 +91,21 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		
+		<!-- SLF4J Logging Dependency -->
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.28</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
